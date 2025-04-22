@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Add item</h2>
+@if (form) {
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field class="w-full sm:w-2xs sm:pr-1">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" cdkFocusInitial required />
+    </mat-form-field>
+
+    <mat-form-field class="w-full sm:w-fit">
+      <mat-label>SKU</mat-label>
+      <input matInput formControlName="sku" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full sm:w-2xs sm:pr-1">
+      <mat-label>Item category</mat-label>
+      <input matInput formControlName="itemcategory" />
+    </mat-form-field>
+    
+
+    <mat-form-field class="w-full sm:w-fit">
+        <mat-label>On hand</mat-label>
+        <input matInput formControlName="onhand" type="number" class="text-right" />
+      </mat-form-field>
+
+    <mat-form-field class="w-full sm:w-2xs sm:pr-1">
+      <mat-label>Type</mat-label>
+      <input matInput formControlName="type" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full sm:w-fit">
+      <mat-label>Price</mat-label>
+      <input matInput formControlName="price" type="number" class="text-right" />
+    </mat-form-field>
+
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button
+    mat-flat-button
+    #btnSave
+    [disabled]="form.invalid || !form.dirty"
+    (click)="save(btnSave)"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
+}

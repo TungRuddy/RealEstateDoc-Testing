@@ -1,0 +1,72 @@
+<div class="bg-white">
+  <mat-toolbar class="flex">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a (click)="goToRoute()" class="hover:!text-[#5f2fb4] hover:font-bold hover:cursor-pointer">RealEstateDoc Testing</a>
+    <span class="flex-auto"></span>
+    <img
+      src="https://i.postimg.cc/rmKmFsXc/unnamed.png"
+      class="ml-2 w-10 h-10 rounded-full"
+      alt="Avatar"
+    />
+  </mat-toolbar>
+</div>
+
+<!-- //// doc https://tailwindcss.com/docs/background-color -->
+<mat-drawer-container class="redoc-container !bg-[#e6e6e6]" autosize>
+  <mat-drawer
+    #drawer
+    class="redoc-sidenav !bg-[#222222] !rounded-none"
+    mode="side"
+    [opened]="openNav"
+  >
+    <mat-list>
+      @for (menu of menus; track menu) {
+      <mat-list-item
+        class="!text-gray-400 group hover:!text-white hover:!bg-[#e6e6e624]"
+        matRipple
+        (click)="goToRoute(menu.value)"
+      >
+        <mat-icon
+          matListItemIcon
+          class="!text-gray-400 group-hover:!text-white"
+          >{{ menu?.icon }}</mat-icon
+        >
+        <div matListItemTitle class="!text-gray-400 group-hover:!text-white">
+          {{ menu?.name }}
+        </div>
+      </mat-list-item>
+      }
+    </mat-list>
+  </mat-drawer>
+
+  <div class="redoc-sidenav-content p-4">
+    @if (showForTesting) {
+    <div class="whitespace-pre-line">
+***Build the app to manage items with basic information: ID, Name, Type, Category, Price…
+ 
+User is able to:
+Create
+Update
+Read
+Soft Delete
+Sort, Filter, Search, Upload document and image (optional)
+ 
+Technical requirements:
+Using mock api to mock a RESTful API back-end (ref: https://www.techiediaries.com/angular-mock-backend/) or you can use any other BE framework that you are comfortable with
+Frontend: Angular latest version
+Implement Angular application using RxJS
+Design and build user interfaces with Angular Material
+Utilize TailwindCSS for styling and ensuring responsive design
+The app can run on any local machine with your instruction on readme
+Send us the github repo
+The more technical skill we can observe in your code the more chance we can get you in
+    </div>
+    }
+    <router-outlet
+      (activate)="showForTesting = false"
+      (deactivate)="showForTesting = true"
+    ></router-outlet>
+  </div>
+</mat-drawer-container>

@@ -1,0 +1,44 @@
+@if (form) {
+<form [formGroup]="form" class="grid grid-cols-3 gap-1">
+  <mat-form-field class="w-full col-span-2">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" cdkFocusInitial required />
+  </mat-form-field>
+
+  <mat-form-field class="w-full">
+    <mat-label>SKU</mat-label>
+    <input matInput formControlName="sku" />
+  </mat-form-field>
+
+  <mat-form-field class="w-full col-span-2">
+    <mat-label>Item category</mat-label>
+    <input matInput formControlName="itemcategory" />
+  </mat-form-field>
+
+  <mat-form-field class="w-full ">
+    <mat-label>On hand</mat-label>
+    <input matInput formControlName="onhand" type="number" class="text-right" />
+  </mat-form-field>
+
+  <mat-form-field class="w-full col-span-2">
+    <mat-label>Type</mat-label>
+    <input matInput formControlName="type" />
+  </mat-form-field>
+
+  <mat-form-field class="w-full ">
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="price" type="number" class="text-right" />
+  </mat-form-field>
+
+  <div class="text-right col-span-3">
+    <button
+      mat-flat-button
+      #btnSave
+      [disabled]="form.invalid || !form.dirty"
+      (click)="save(btnSave)"
+    >
+      Save
+    </button>
+  </div>
+</form>
+}

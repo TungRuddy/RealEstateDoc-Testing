@@ -1,0 +1,20 @@
+mwlResizable {
+  box-sizing: border-box; // required for the enableGhostResize option to work
+}
+
+
+.mat-sort-header {
+    cursor: -webkit-grab;
+    background: transparent;
+    border: 0;
+    outline: 0;
+}
+
+.resize-handle-right {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    cursor: col-resize;
+    width: 8px;
+    z-index: 9;
+  }

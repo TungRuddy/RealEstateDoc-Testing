@@ -1,0 +1,4 @@
+@urlbase = http://localhost:3000
+
+GET {{urlbase}}/products/8cc7 HTTP/1.1
+content-type: application/json

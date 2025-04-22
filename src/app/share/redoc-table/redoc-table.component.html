@@ -1,0 +1,86 @@
+<div class="flex justify-between items-center">
+  <mat-form-field class="inputTableSearch">
+    <mat-label>Search</mat-label>
+    <input matInput #inputSearch />
+  </mat-form-field>
+  <span class="flex-auto"></span>
+
+  <button
+    mat-mini-fab
+    class="!bg-[#5f2fb4] group hover:!bg-[#7744cc] !text-white"
+    (click)="add.emit(true)"
+  >
+    <mat-icon
+      class="group-hover:!text-[30px] group-hover:!w-[30px] group-hover:!h-[30px]"
+      >add</mat-icon
+    >
+  </button>
+
+  <button mat-icon-button (click)="refresh.emit(true)">
+    <mat-icon>refresh</mat-icon>
+  </button>
+</div>
+
+<div class="mat-elevation-z8 !overflow-auto">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    #table
+    matSort
+    class="redocTable block !overflow-auto w-max"
+  >
+    @for (column of columns; track column) { @if (displayedColumns |
+    pipeIncludes : column.name) {
+    <redoc-table-cell
+      [table]="table"
+      [matColumnDefInput]="column.name"
+      [column]="column"
+    >
+      <ng-template let-row="row">
+        <span
+          [innerHTML]="
+            {
+              type: column?.type,
+              value: column.special_key
+                ? ((row[column.name] !== undefined ? row[column.name] : row)
+                  | pipeAccessObject : column.special_key)
+                : row[column.name],
+              format: column.format,
+            } | pipeDataTable
+          "
+        >
+        </span>
+      </ng-template>
+    </redoc-table-cell>
+    } }
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="openDetails(row)"
+      [ngClass]="{
+        '!bg-[#5f2fb424]':
+          row && row.id && selectedRowID === row.id && clientWidth > 600
+      }"
+    ></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell px-4" [attr.colspan]="displayedColumns.length">
+        No data matching the filter "{{ inputSearch?.value }}"
+      </td>
+    </tr>
+  </table>
+</div>
+<mat-paginator
+  [pageSizeOptions]="
+    dataSource &&
+    dataSource.data &&
+    dataSource.data.length &&
+    dataSource.data.length > 100
+      ? [5, 10, 25, 50, 100, dataSource.data.length]
+      : [5, 10, 25, 50, 100]
+  "
+  showFirstLastButtons
+></mat-paginator>

@@ -1,0 +1,17 @@
+::ng-deep.mat-sort-header{
+    &:hover{
+        .resize-handle-right{
+            background-color: #0000000f !important;
+        }
+    }
+}
+
+::ng-deep.inputTableSearch{
+    .mat-mdc-form-field-subscript-wrapper{
+        display: none !important;
+    }
+}
+
+.redocTable{
+    height: calc(100vh - 64px - 50px - 56px - 56px)
+}

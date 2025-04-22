@@ -1,0 +1,30 @@
+<mat-sidenav-container class="!bg-inherit">
+  <mat-sidenav-content class="!overflow-hidden">
+    <redoc-table
+      [dataSource]="dataSource"
+      [columns]="columns"
+      [query]="query"
+      (add)="addItem()"
+      (refresh)="getData()"
+      (rowClick)="drawer?.open()"
+    >
+    </redoc-table>
+  </mat-sidenav-content>
+
+  <mat-sidenav
+    #drawer
+    mode="side"
+    position="end"
+    class="!bg-inherit !w-full sm:!w-sm md:!w-md lg:!w-lg xl:!w-xl"
+  >
+    <div class="mx-4 p-4 bg-white" style="height: -webkit-fill-available">
+      <div class="flex items-center mb-4">
+        <button mat-icon-button class="mr-2" (click)="drawer.close()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h2>Chi tiết</h2>
+      </div>
+      <router-outlet />
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

@@ -1,0 +1,41 @@
+<ng-container
+  matColumnDef="{{ matColumnDefInput }}"
+>
+  <th
+    mat-header-cell
+    *matHeaderCellDef
+    mat-sort-header
+    [disabled]="column.disabled_sort"
+    [attr.sticky]="column.sticky"
+    [ngClass]="{
+      numberRight: column.type == 'number'
+    }"
+    [ngStyle]="column.styles"
+    mwlResizable
+    [validateResize]="validate"
+    id="CellHeader-{{ matColumnDefInput }}"
+    (resizeEnd)="
+      resizeCol($event, matColumnDefInput)
+    "
+    (resizing)="
+      resizingCol($event, matColumnDefInput)
+    "
+  >
+    {{ column.colname_user ? column.colname_user : column.colname }}
+    <div class="resize-handle-right" mwlResizeHandle [resizeEdges]="resizeEdges"></div>
+  </th>
+
+  <td
+    mat-cell
+    *matCellDef="let row; let i = dataIndex"
+    [attr.data-label]="
+      column.colname_user ? column.colname_user : column.colname
+    "
+    [ngStyle]="column.styles"
+  >
+    <ng-template
+      [ngTemplateOutlet]="templateRef"
+      [ngTemplateOutletContext]="{ row: row, i: i }"
+    ></ng-template>
+  </td>
+</ng-container>

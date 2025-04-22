@@ -1,0 +1,199 @@
+{
+  "products": [
+    {
+      "id": "8cc7",
+      "name": "Emax 2",
+      "type": "",
+      "itemcategory": "",
+      "price": 1000,
+      "sku": "EMAA",
+      "onhand": 50,
+      "files": []
+    },
+    {
+      "id": "8dc8",
+      "name": "Item 21",
+      "type": "",
+      "itemcategory": "",
+      "price": 10000,
+      "sku": "QDZ",
+      "onhand": 0,
+      "files": []
+    },
+    {
+      "id": "3d82",
+      "name": "Hello man",
+      "type": "",
+      "itemcategory": "",
+      "price": 2342340,
+      "sku": "HJQID",
+      "onhand": 11000,
+      "files": [],
+      "created": "2025-04-22T09:40:44.349Z"
+    },
+    {
+      "id": "7b85",
+      "name": "Alo 1",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": []
+    },
+    {
+      "id": "20f9",
+      "name": "asdfadfaasda",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T09:52:22.434Z"
+    },
+    {
+      "id": "48d0",
+      "name": "fadsfasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:18.736Z"
+    },
+    {
+      "id": "7278",
+      "name": "asdasdas",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:20.931Z"
+    },
+    {
+      "id": "54b5",
+      "name": "asfasdasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:23.015Z"
+    },
+    {
+      "id": "fe4d",
+      "name": "asdasdsfasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:24.719Z"
+    },
+    {
+      "id": "ca89",
+      "name": "asdasdasdasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:26.545Z"
+    },
+    {
+      "id": "1fb2",
+      "name": "aseddasdasfasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:28.595Z"
+    },
+    {
+      "id": "b88d",
+      "name": "dasdasdasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:30.315Z"
+    },
+    {
+      "id": "87bc",
+      "name": "asasdasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:31.826Z"
+    },
+    {
+      "id": "cde4",
+      "name": "dasdasdasdas",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:34.031Z"
+    },
+    {
+      "id": "c838",
+      "name": "dasdasdasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:35.590Z"
+    },
+    {
+      "id": "46a8",
+      "name": "dasdasdasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:37.203Z"
+    },
+    {
+      "id": "1f12",
+      "name": "dasdasd",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:19:38.972Z"
+    },
+    {
+      "id": "9e5c",
+      "name": "sdf oasjdfhos jdfhas dhofhajdsfh asjkdlofhkohf jkfhasdjkf hjkfhnadsfads",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T11:39:25.664Z"
+    }
+  ]
+}
