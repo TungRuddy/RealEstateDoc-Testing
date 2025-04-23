@@ -17,14 +17,17 @@
     position="end"
     class="!bg-inherit !w-full sm:!w-sm md:!w-md lg:!w-lg xl:!w-xl"
   >
-    <div class="mx-4 p-4 bg-white" style="height: -webkit-fill-available">
-      <div class="flex items-center mb-4">
+    <div class="mx-4 flex flex-col bg-white" style="height: -webkit-fill-available">
+      <div class="flex items-center mb-2 mt-2">
         <button mat-icon-button class="mr-2" (click)="drawer.close()">
           <mat-icon>arrow_back</mat-icon>
         </button>
-        <h2>Chi tiết</h2>
+        <h2>Details</h2>
       </div>
-      <router-outlet />
+      <div class="flex-1 p-4 overflow-auto">
+        <router-outlet />
+      </div>
+
     </div>
   </mat-sidenav>
 </mat-sidenav-container>

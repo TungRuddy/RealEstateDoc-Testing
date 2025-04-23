@@ -15,7 +15,7 @@
     <input matInput formControlName="itemcategory" />
   </mat-form-field>
 
-  <mat-form-field class="w-full ">
+  <mat-form-field class="w-full">
     <mat-label>On hand</mat-label>
     <input matInput formControlName="onhand" type="number" class="text-right" />
   </mat-form-field>
@@ -25,12 +25,12 @@
     <input matInput formControlName="type" />
   </mat-form-field>
 
-  <mat-form-field class="w-full ">
+  <mat-form-field class="w-full">
     <mat-label>Price</mat-label>
     <input matInput formControlName="price" type="number" class="text-right" />
   </mat-form-field>
 
-  <div class="text-right col-span-3">
+  <div class="text-right col-span-3 mt-3">
     <button
       mat-flat-button
       #btnSave
@@ -40,5 +40,58 @@
       Save
     </button>
   </div>
+
+  <mat-list class="col-span-3">
+    <div mat-subheader class="pb-0 pr-0 pt-0">
+      <!-- <mat-icon type="button">attach_file</mat-icon> -->
+      Files
+    </div>
+    <div
+      ng2FileDrop
+      [ngClass]="{ 'file-over': hasDropZoneOver }"
+      (fileOver)="hasDropZoneOver = $event"
+      [uploader]="uploader"
+      class="drop-zone mb-4"
+    >
+      <mat-icon>cloud_upload</mat-icon>
+      drop a file here to upload
+      <input
+        type="file"
+        ng2FileSelect
+        [uploader]="uploader"
+        id="uploader-input"
+      />
+    </div>
+    <mat-list-item
+      class="pt-1 pb-1 shadow-md mb-1"
+      *ngFor="let file of form.value.files; let i = index"
+    >
+      <div class="flex items-center">
+        <div class="flex-auto">
+          <p class="mb-0 mt-0">{{ file.name }}</p>
+          <small class="text-gray-400"
+            >size: {{ file.size }}, created:
+            {{ file.created | date : "dd/MM/yyyy HH:mm" }}</small
+          >
+        </div>
+        <button
+          mat-icon-button
+          color="accent"
+          type="button"
+          click-stop-propagation
+        >
+          <mat-icon>save_alt</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          click-stop-propagation
+          type="button"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  </mat-list>
 </form>
 }

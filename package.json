@@ -25,6 +25,7 @@
     "angular-resizable-element": "^7.0.2",
     "faker": "^6.6.6",
     "json-server": "^1.0.0-beta.3",
+    "ng2-file-upload": "^8.0.0",
     "postcss": "^8.5.1",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.0.0",

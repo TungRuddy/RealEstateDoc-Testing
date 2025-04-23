@@ -22,7 +22,7 @@
     "
   >
     {{ column.colname_user ? column.colname_user : column.colname }}
-    <div class="resize-handle-right" mwlResizeHandle [resizeEdges]="resizeEdges"></div>
+    <div class="resize-handle-right" mwlResizeHandle [resizeEdges]="resizeEdges" (click)="$event.stopPropagation()"></div>
   </th>
 
   <td

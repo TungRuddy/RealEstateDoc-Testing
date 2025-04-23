@@ -12,13 +12,16 @@ import { ITEM } from '../../models/items.model';
 import { ItemsService } from '../../services/items.service';
 import { NotifyService } from '../../services/notify.service';
 import { MaterialImports } from '../../materials.module';
-import { SharingImports } from '../../sharing.module';
+import { SharingImports, UploadFileImports } from '../../sharing.module';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { FileItem, FileUploader } from 'ng2-file-upload';
+import { environment } from '../../../environments/environment';
+import { FilesService } from '../../services/files.service';
 
 @Component({
   selector: 'app-items-detail',
-  imports: [SharingImports, MaterialImports],
+  imports: [SharingImports, MaterialImports, UploadFileImports],
   templateUrl: './items-detail.component.html',
   styleUrl: './items-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,8 +30,16 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   form!: FormGroup<any> | null;
   sub!: Subscription;
 
+  uploader: FileUploader = new FileUploader({
+    url: environment.api_url + '/files',
+    isHTML5: true,
+    autoUpload: false,
+  });
+  hasDropZoneOver!: boolean;
+  interval: any;
   constructor(
     private itemsService: ItemsService,
+    private filesService: FilesService,
     private notifyService: NotifyService,
     private route: ActivatedRoute,
     private cd: ChangeDetectorRef
@@ -42,10 +53,13 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
         this.sub = this.itemsService.get(params['id']).subscribe((res) => {
           if (res) {
             this.setForm(res);
+            
           }
         });
       }
     });
+
+    this.initUpload();
   }
   setForm(obj: ITEM | null) {
     this.form = new FormGroup({
@@ -58,10 +72,48 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
       onhand: new FormControl(obj?.onhand || 0),
       files: new FormControl(obj?.files || []),
     });
+
+    // this.uploader.onBuildItemForm = (item, form) => {
+    //   form.append('id', this.form?.getRawValue().id);
+    // };
     this.cd.detectChanges();
   }
   ngAfterViewInit(): void {}
   ngOnDestroy(): void {}
+
+  initUpload(){
+    this.uploader.onBeforeUploadItem = (item) => {
+      item.withCredentials = false;
+    };
+    this.uploader.onSuccessItem = (item: FileItem, response: string) => {
+      let data = JSON.parse(response);
+      this.uploader.clearQueue();
+      const input = <HTMLInputElement> document.getElementById('uploader-input');
+      if(input) input.value = '';
+      console.log(data);
+    };
+    this.uploader.onAfterAddingFile = async (item: any) => {
+      item.withCredentials = false;
+      console.log(item);
+      // const input = <any> document.getElementById('uploader-input');
+      // const file = input.files[0];
+      // console.log(file);
+      this.form?.value.files.push(await this.filesService.save({
+        ...item.file,
+        created: new Date()
+      }).toPromise());
+      this.form?.controls['files'].setValue([...this.form?.value.files]);
+      this.cd.detectChanges();
+      // await this.itemsService.save({id: this.form?.value.id, files: this.form?.value.files}).toPromise();
+      await this.itemsService.save(this.form?.getRawValue()).toPromise();
+      this.uploader.clearQueue();
+      const input = <HTMLInputElement> document.getElementById('uploader-input');
+      if(input) input.value = '';
+    };
+    this.uploader.onWhenAddingFileFailed = (item, filter) => {
+      
+    };
+  }
 
   async save(btn: MatButton) {
     btn.disabled = true;

@@ -2,7 +2,7 @@ import { FILE } from "./file.model";
 
 export interface ITEM {
     id?: string;
-    name: string;
+    name?: string;
     type?: string;
     itemcategory?: string;
     price?: number;

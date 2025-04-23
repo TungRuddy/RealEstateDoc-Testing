@@ -1,8 +1,9 @@
 <div class="bg-white">
   <mat-toolbar class="flex">
-    <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
+    <button mat-icon-button (click)="drawer?.toggle()">
+      <mat-icon>{{drawer.opened ? 'menu_open' : 'menu'}}</mat-icon>
     </button>
+
     <a (click)="goToRoute()" class="hover:!text-[#5f2fb4] hover:font-bold hover:cursor-pointer">RealEstateDoc Testing</a>
     <span class="flex-auto"></span>
     <img
@@ -20,6 +21,7 @@
     class="redoc-sidenav !bg-[#222222] !rounded-none"
     mode="side"
     [opened]="openNav"
+
   >
     <mat-list>
       @for (menu of menus; track menu) {

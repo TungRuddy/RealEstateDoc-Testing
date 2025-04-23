@@ -8,7 +8,26 @@
       "price": 1000,
       "sku": "EMAA",
       "onhand": 50,
-      "files": []
+      "files": [
+        {
+          "id": "14d7",
+          "rawFile": {},
+          "size": 214502,
+          "type": "image/png",
+          "name": "Screen Shot 2025-02-12 at 17.47.31.png"
+        },
+        {
+          "id": "6663"
+        },
+        {
+          "id": "007d",
+          "rawFile": {},
+          "size": 34919,
+          "type": "image/png",
+          "name": "logo.png",
+          "created": "2025-04-23T00:48:09.007Z"
+        }
+      ]
     },
     {
       "id": "8dc8",
@@ -18,7 +37,15 @@
       "price": 10000,
       "sku": "QDZ",
       "onhand": 0,
-      "files": []
+      "files": [
+        {
+          "id": "cfaf",
+          "rawFile": {},
+          "size": 203681,
+          "type": "image/png",
+          "name": "Screen Shot 2025-02-12 at 19.05.56.png"
+        }
+      ]
     },
     {
       "id": "3d82",
@@ -39,18 +66,30 @@
       "price": 0,
       "sku": "",
       "onhand": 0,
-      "files": []
+      "files": [
+        {
+          "id": "5586"
+        }
+      ]
     },
     {
       "id": "20f9",
-      "name": "asdfadfaasda",
-      "type": "",
-      "itemcategory": "",
-      "price": 0,
-      "sku": "",
-      "onhand": 0,
-      "files": [],
-      "created": "2025-04-22T09:52:22.434Z"
+      "files": [
+        {
+          "id": "1bfe",
+          "rawFile": {},
+          "size": 39704,
+          "type": "image/jpeg",
+          "name": "implantt.jpg"
+        },
+        {
+          "id": "1571",
+          "rawFile": {},
+          "size": 142127,
+          "type": "image/jpeg",
+          "name": "trong-rang-cam-ghep-rang-implant.jpg"
+        }
+      ]
     },
     {
       "id": "48d0",
@@ -194,6 +233,65 @@
       "onhand": 0,
       "files": [],
       "created": "2025-04-22T11:39:25.664Z"
+    },
+    {
+      "id": "c617",
+      "name": "Test",
+      "type": "",
+      "itemcategory": "",
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-22T22:29:38.461Z"
+    }
+  ],
+  "categories": [],
+  "files": [
+    {
+      "id": "14d7",
+      "rawFile": {},
+      "size": 214502,
+      "type": "image/png",
+      "name": "Screen Shot 2025-02-12 at 17.47.31.png"
+    },
+    {
+      "id": "5586"
+    },
+    {
+      "id": "6663"
+    },
+    {
+      "id": "8244"
+    },
+    {
+      "id": "1bfe",
+      "rawFile": {},
+      "size": 39704,
+      "type": "image/jpeg",
+      "name": "implantt.jpg"
+    },
+    {
+      "id": "1571",
+      "rawFile": {},
+      "size": 142127,
+      "type": "image/jpeg",
+      "name": "trong-rang-cam-ghep-rang-implant.jpg"
+    },
+    {
+      "id": "cfaf",
+      "rawFile": {},
+      "size": 203681,
+      "type": "image/png",
+      "name": "Screen Shot 2025-02-12 at 19.05.56.png"
+    },
+    {
+      "id": "007d",
+      "rawFile": {},
+      "size": 34919,
+      "type": "image/png",
+      "name": "logo.png",
+      "created": "2025-04-23T00:48:09.007Z"
     }
   ]
 }
