@@ -1,59 +1,62 @@
-# Angular19
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+# RealEstateDoc interview
 
-## Development server
+This app manage items with basic information: ID, Name, Type, Category, Price…
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
+## Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular 19
+- Interfaces with Angular Material
+- TailwindCSS for styling and responsive design
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Run Locally With 4 Steps
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Clone the project
 
 ```bash
-ng generate --help
+  git clone https://github.com/TungRuddy/RealEstateDoc-Testing.git
 ```
 
-## Building
-
-To build the project run:
+Install dependencies
 
 ```bash
-ng build
+  npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Start the server for mock api
 
 ```bash
-ng test
+  npm run server
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Start web application
 
 ```bash
-ng e2e
+  npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Project Structure (Overview)
 
-## Additional Resources
+```javascript
+RealEstateDoc-Testing/
+├── server/                     # Mock API server
+│   └── database.json           # JSON data for mock API
+│
+├── src/
+│   ├── app/                    # Main application source
+│   │   ├── items/              # Item-related components
+│   │   ├── services/           # Data services and APIs
+│   │   ├── pipes/              # Custom pipes
+│   │   ├── models/             # TypeScript models/interfaces
+│   │   └── share/              # Shared modules and components
+│   │       └── redoc-table/    # Reusable table component
+│   │
+│   └── environments/           # Environment configs
+│
+├── package.json                # Project dependencies and scripts
+└── angular.json                # Angular CLI configuration
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```
+
