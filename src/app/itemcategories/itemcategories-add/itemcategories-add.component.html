@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Add Category</h2>
+@if (form) {
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field class="w-full">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" cdkFocusInitial required />
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button
+    mat-flat-button
+    #btnSave
+    [disabled]="form.invalid || !form.dirty"
+    (click)="save(btnSave)"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
+}

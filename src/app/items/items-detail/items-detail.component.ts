@@ -18,10 +18,17 @@ import { Subscription } from 'rxjs';
 import { FileItem, FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { FilesService } from '../../services/files.service';
+import { RedocAutocompleteComponent } from '../../share/redoc-autocomplete/redoc-autocomplete.component';
+import { ItemcategoriesService } from '../../services/itemcategories.service';
 
 @Component({
   selector: 'app-items-detail',
-  imports: [SharingImports, MaterialImports, UploadFileImports],
+  imports: [
+    SharingImports,
+    MaterialImports,
+    UploadFileImports,
+    RedocAutocompleteComponent,
+  ],
   templateUrl: './items-detail.component.html',
   styleUrl: './items-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,6 +46,7 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   interval: any;
   constructor(
     private itemsService: ItemsService,
+    public itemcategoriesService: ItemcategoriesService,
     private filesService: FilesService,
     private notifyService: NotifyService,
     private route: ActivatedRoute,
@@ -48,12 +56,11 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
     this.route.params.subscribe((params) => {
       if (params['id']) {
         this.form = null;
-        if(this.sub) this.sub.unsubscribe();
+        if (this.sub) this.sub.unsubscribe();
         this.cd.markForCheck();
         this.sub = this.itemsService.get(params['id']).subscribe((res) => {
           if (res) {
             this.setForm(res);
-            
           }
         });
       }
@@ -82,15 +89,15 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {}
   ngOnDestroy(): void {}
 
-  initUpload(){
+  initUpload() {
     this.uploader.onBeforeUploadItem = (item) => {
       item.withCredentials = false;
     };
     this.uploader.onSuccessItem = (item: FileItem, response: string) => {
       let data = JSON.parse(response);
       this.uploader.clearQueue();
-      const input = <HTMLInputElement> document.getElementById('uploader-input');
-      if(input) input.value = '';
+      const input = <HTMLInputElement>document.getElementById('uploader-input');
+      if (input) input.value = '';
       console.log(data);
     };
     this.uploader.onAfterAddingFile = async (item: any) => {
@@ -99,21 +106,23 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
       // const input = <any> document.getElementById('uploader-input');
       // const file = input.files[0];
       // console.log(file);
-      this.form?.value.files.push(await this.filesService.save({
-        ...item.file,
-        created: new Date()
-      }).toPromise());
+      this.form?.value.files.push(
+        await this.filesService
+          .save({
+            ...item.file,
+            created: new Date(),
+          })
+          .toPromise()
+      );
       this.form?.controls['files'].setValue([...this.form?.value.files]);
       this.cd.markForCheck();
       // await this.itemsService.save({id: this.form?.value.id, files: this.form?.value.files}).toPromise();
       await this.itemsService.save(this.form?.getRawValue()).toPromise();
       this.uploader.clearQueue();
-      const input = <HTMLInputElement> document.getElementById('uploader-input');
-      if(input) input.value = '';
+      const input = <HTMLInputElement>document.getElementById('uploader-input');
+      if (input) input.value = '';
     };
-    this.uploader.onWhenAddingFileFailed = (item, filter) => {
-      
-    };
+    this.uploader.onWhenAddingFileFailed = (item, filter) => {};
   }
 
   async save(btn: MatButton) {
@@ -126,7 +135,7 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
     if (res) {
       this.setForm(res);
       this.notifyService.sendData('Saved successfully!');
-      this.itemsService.sendData(res)
+      this.itemsService.sendData(res);
       btn.disabled = false;
     } else {
       this.notifyService.sendData('Cant save item!');
@@ -134,7 +143,7 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  async remove(index: number){
+  async remove(index: number) {
     this.form?.value.files.splice(index, 1);
     this.form?.controls['files'].setValue([...this.form?.value.files]);
     this.cd.markForCheck();

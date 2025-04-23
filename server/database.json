@@ -4,7 +4,11 @@
       "id": "7278",
       "name": "Emax",
       "type": "",
-      "itemcategory": "",
+      "itemcategory": {
+        "id": "5895",
+        "name": "Implants",
+        "created": "2025-04-23T07:34:10.240Z"
+      },
       "price": 0,
       "sku": "QDA",
       "onhand": 0,
@@ -15,7 +19,11 @@
       "id": "54b5",
       "name": "zirconia",
       "type": "",
-      "itemcategory": "",
+      "itemcategory": {
+        "id": "5895",
+        "name": "Implants",
+        "created": "2025-04-23T07:34:10.240Z"
+      },
       "price": 0,
       "sku": "QFAS",
       "onhand": 0,
@@ -26,7 +34,11 @@
       "id": "fe4d",
       "name": "asdasdsfasd",
       "type": "",
-      "itemcategory": "",
+      "itemcategory": {
+        "id": "d025",
+        "name": "BioCeram Color",
+        "created": "2025-04-23T07:34:58.378Z"
+      },
       "price": 100000,
       "sku": "",
       "onhand": 0,
@@ -142,9 +154,40 @@
       "onhand": 0,
       "files": [],
       "created": "2025-04-22T22:29:38.461Z"
+    },
+    {
+      "id": "0071",
+      "name": "Implant item 2",
+      "type": "",
+      "itemcategory": {
+        "id": "5895",
+        "name": "Implants",
+        "created": "2025-04-23T07:34:10.240Z"
+      },
+      "price": 0,
+      "sku": "",
+      "onhand": 0,
+      "files": [],
+      "created": "2025-04-23T08:15:14.434Z"
     }
   ],
-  "categories": [],
+  "categories": [
+    {
+      "id": "5895",
+      "name": "Implants",
+      "created": "2025-04-23T07:34:10.240Z"
+    },
+    {
+      "id": "d025",
+      "name": "BioCeram Color",
+      "created": "2025-04-23T07:34:58.378Z"
+    },
+    {
+      "id": "a6d1",
+      "name": "Cercon",
+      "created": "2025-04-23T07:35:35.632Z"
+    }
+  ],
   "files": [
     {
       "id": "14d7",

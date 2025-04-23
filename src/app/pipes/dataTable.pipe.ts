@@ -14,7 +14,6 @@ export class PipeDataTable implements PipeTransform {
   }
 
   transform(data: DataTableForPipe): string | any {
-    console.log(data);
     if (data.type === 'datetime' && data.value) {
 
       if (typeof data.value === 'string') {

@@ -10,10 +10,16 @@
     <input matInput formControlName="sku" />
   </mat-form-field>
 
-  <mat-form-field class="w-full col-span-2">
-    <mat-label>Item category</mat-label>
-    <input matInput formControlName="itemcategory" />
-  </mat-form-field>
+  <redoc-autocomplete
+    class="col-span-2 w-full"
+    [formClass]="'w-full col-span-2'"
+    [placeholder]="'Item category'"
+    [service]="itemcategoriesService"
+    [bindingData]="form.value.itemcategory"
+    (onChange)="
+      form.controls['itemcategory'].setValue($event); form.markAsDirty()
+    "
+  ></redoc-autocomplete>
 
   <mat-form-field class="w-full">
     <mat-label>On hand</mat-label>

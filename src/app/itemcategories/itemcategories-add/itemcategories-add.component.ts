@@ -1,25 +1,22 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ItemsService } from '../../services/items.service';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ITEM } from '../../models/items.model';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { NotifyService } from '../../services/notify.service';
 import { SharingImports } from '../../sharing.module';
 import { MaterialImports } from '../../materials.module';
 import { MatButton } from '@angular/material/button';
 import { ItemcategoriesService } from '../../services/itemcategories.service';
-import { RedocAutocompleteComponent } from '../../share/redoc-autocomplete/redoc-autocomplete.component';
+import { ITEMCATEGORY } from '../../models/itemcategories.model';
 
 @Component({
-  selector: 'app-items-add',
+  selector: 'app-category-add',
   imports: [
     SharingImports,
     MaterialImports,
-    MatDialogModule,
-    RedocAutocompleteComponent
+    MatDialogModule
   ],
-  templateUrl: './items-add.component.html',
-  styleUrl: './items-add.component.scss',
+  templateUrl: './itemcategories-add.component.html',
+  styleUrl: './itemcategories-add.component.scss',
 })
 export class ItemsAddComponent implements OnInit, AfterViewInit, OnDestroy {
   form: FormGroup<any> = new FormGroup({});
@@ -27,8 +24,7 @@ export class ItemsAddComponent implements OnInit, AfterViewInit, OnDestroy {
   // readonly data = inject(MAT_DIALOG_DATA);
 
   constructor(
-    private itemsService: ItemsService,
-    public itemcategoriesService: ItemcategoriesService,
+    private itemcategoriesService: ItemcategoriesService,
     private notifyService: NotifyService,
     private dialogRef: MatDialogRef<ItemsAddComponent>,
   ) {
@@ -37,16 +33,9 @@ export class ItemsAddComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     
   }
-  setForm(obj: ITEM | null) {
+  setForm(obj: ITEMCATEGORY | null) {
     this.form = new FormGroup({
       name: new FormControl(obj?.name || '', [Validators.required]),
-      type: new FormControl(obj?.type || ''),
-      itemcategory: new FormControl(obj?.itemcategory || ''),
-      price: new FormControl(obj?.price || 0),
-      sku: new FormControl(obj?.sku || ''),
-      onhand: new FormControl(obj?.onhand || 0),
-      files: new FormControl(obj?.files || []),
-
     });
   }
   ngAfterViewInit(): void {
@@ -59,16 +48,16 @@ export class ItemsAddComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async save(btn: MatButton){
     btn.disabled = true;
-    const res = await this.itemsService.save({
+    const res = await this.itemcategoriesService.save({
       ...this.form?.getRawValue(),
       created: new Date(),
     }).toPromise();
     if(res){
-      this.notifyService.sendData('Item created successfully!');
+      this.notifyService.sendData('Category created successfully!');
       this.dialogRef.close(res);
       btn.disabled = false;
     } else {
-      this.notifyService.sendData('Cant create item!');
+      this.notifyService.sendData('Cant create category!');
       btn.disabled = false;
     }
   }

@@ -123,7 +123,9 @@ export class RedocTableComponent
     const routeParts: string[] = this.router.url.split('/');
     this.selectedRowID =
       routeParts[routeParts.indexOf(this.route_key) + 1]?.split('?')[0];
-    this.rowClick.emit({ id: this.selectedRowID });
+    if (this.selectedRowID) {
+      this.rowClick.emit({ id: this.selectedRowID });
+    }
   }
 
   updateSortPaginator() {

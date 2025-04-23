@@ -1,0 +1,19 @@
+@if (form) {
+<form [formGroup]="form" class="grid grid-cols-3 gap-1">
+  <mat-form-field class="w-full  col-span-3">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" cdkFocusInitial required />
+  </mat-form-field>
+
+  <div class="text-right col-span-3 mt-3">
+    <button
+      mat-flat-button
+      #btnSave
+      [disabled]="form.invalid || !form.dirty"
+      (click)="save(btnSave)"
+    >
+      Save
+    </button>
+  </div>
+</form>
+}

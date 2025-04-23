@@ -1,0 +1,43 @@
+<mat-sidenav-container class="!bg-inherit">
+  <mat-sidenav-content class="!overflow-hidden">
+    <redoc-table
+      [dataSource]="dataSource"
+      [columns]="columns"
+      [query]="query"
+      (add)="addItem()"
+      (refresh)="getData()"
+      [route_key]="'itemcategories'"
+      (rowClick)="rowSelected = $event; drawer?.open();"
+    >
+    </redoc-table>
+  </mat-sidenav-content>
+
+  <mat-sidenav
+    #drawer
+    mode="side"
+    position="end"
+    class="!bg-inherit !w-full sm:!w-sm md:!w-md lg:!w-lg xl:!w-xl"
+  >
+    <div class="mx-4 flex flex-col bg-white" style="height: -webkit-fill-available">
+      <div class="flex items-center mb-2 mt-2">
+        <button mat-icon-button class="mr-2" (click)="close()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h2 class="flex-auto">Details</h2>
+        <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="rowSelected">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="delete()">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
+      <div class="flex-1 p-4 overflow-auto">
+        <router-outlet />
+      </div>
+
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

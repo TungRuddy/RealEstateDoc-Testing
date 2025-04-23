@@ -12,16 +12,26 @@
       <input matInput formControlName="sku" />
     </mat-form-field>
 
-    <mat-form-field class="w-full sm:w-2xs sm:pr-1">
-      <mat-label>Item category</mat-label>
-      <input matInput formControlName="itemcategory" />
-    </mat-form-field>
-    
+    <redoc-autocomplete
+      class="w-full sm:w-2xs sm:pr-1"
+      [formClass]="'w-full sm:w-2xs sm:pr-1'"
+      [placeholder]="'Item category'"
+      [service]="itemcategoriesService"
+      [bindingData]="form.value.itemcategory"
+      (onChange)="
+        form.controls['itemcategory'].setValue($event); form.markAsDirty()
+      "
+    ></redoc-autocomplete>
 
     <mat-form-field class="w-full sm:w-fit">
-        <mat-label>On hand</mat-label>
-        <input matInput formControlName="onhand" type="number" class="text-right" />
-      </mat-form-field>
+      <mat-label>On hand</mat-label>
+      <input
+        matInput
+        formControlName="onhand"
+        type="number"
+        class="text-right"
+      />
+    </mat-form-field>
 
     <mat-form-field class="w-full sm:w-2xs sm:pr-1">
       <mat-label>Type</mat-label>
@@ -30,10 +40,13 @@
 
     <mat-form-field class="w-full sm:w-fit">
       <mat-label>Price</mat-label>
-      <input matInput formControlName="price" type="number" class="text-right" />
+      <input
+        matInput
+        formControlName="price"
+        type="number"
+        class="text-right"
+      />
     </mat-form-field>
-
-
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
