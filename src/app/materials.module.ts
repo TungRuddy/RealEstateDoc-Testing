@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
 
 export const MaterialImports = [
   MatButtonModule,
@@ -22,7 +23,7 @@ export const MaterialImports = [
   MatListModule,
   MatCardModule,
   MatRippleModule,
-  
+  MatMenuModule,
   MatFormFieldModule,
   MatInputModule,
   MatTableModule,

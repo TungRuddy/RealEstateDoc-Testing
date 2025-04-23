@@ -63,6 +63,7 @@ export class RedocTableComponent
 
   @Input() columns: Array<COLUMN> = [];
   @Input() query!: QueryList;
+  @Input() route_key: string = '';
 
   @Output() add = new EventEmitter();
   @Output() refresh = new EventEmitter();
@@ -77,7 +78,7 @@ export class RedocTableComponent
   clientWidth: number;
   subResize!: Subscription;
   constructor(
-    private cd: ChangeDetectorRef, 
+    private cd: ChangeDetectorRef,
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute
@@ -103,7 +104,8 @@ export class RedocTableComponent
   ngAfterViewInit(): void {
     this.updateSortPaginator();
     this.initSearch();
-    console.log(this.route, this.router)
+    this.checkIdHasOnRow();
+    console.log(this.route, this.router);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -115,6 +117,13 @@ export class RedocTableComponent
     if (this.subResize) this.subResize.unsubscribe();
 
     if (this.subSearch) this.subSearch.unsubscribe();
+  }
+
+  checkIdHasOnRow() {
+    const routeParts: string[] = this.router.url.split('/');
+    this.selectedRowID =
+      routeParts[routeParts.indexOf(this.route_key) + 1]?.split('?')[0];
+    this.rowClick.emit({ id: this.selectedRowID });
   }
 
   updateSortPaginator() {

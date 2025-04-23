@@ -1,125 +1,23 @@
 {
   "products": [
     {
-      "id": "8cc7",
-      "name": "Emax 2",
-      "type": "",
-      "itemcategory": "",
-      "price": 1000,
-      "sku": "EMAA",
-      "onhand": 50,
-      "files": [
-        {
-          "id": "14d7",
-          "rawFile": {},
-          "size": 214502,
-          "type": "image/png",
-          "name": "Screen Shot 2025-02-12 at 17.47.31.png"
-        },
-        {
-          "id": "6663"
-        },
-        {
-          "id": "007d",
-          "rawFile": {},
-          "size": 34919,
-          "type": "image/png",
-          "name": "logo.png",
-          "created": "2025-04-23T00:48:09.007Z"
-        }
-      ]
-    },
-    {
-      "id": "8dc8",
-      "name": "Item 21",
-      "type": "",
-      "itemcategory": "",
-      "price": 10000,
-      "sku": "QDZ",
-      "onhand": 0,
-      "files": [
-        {
-          "id": "cfaf",
-          "rawFile": {},
-          "size": 203681,
-          "type": "image/png",
-          "name": "Screen Shot 2025-02-12 at 19.05.56.png"
-        }
-      ]
-    },
-    {
-      "id": "3d82",
-      "name": "Hello man",
-      "type": "",
-      "itemcategory": "",
-      "price": 2342340,
-      "sku": "HJQID",
-      "onhand": 11000,
-      "files": [],
-      "created": "2025-04-22T09:40:44.349Z"
-    },
-    {
-      "id": "7b85",
-      "name": "Alo 1",
-      "type": "",
-      "itemcategory": "",
-      "price": 0,
-      "sku": "",
-      "onhand": 0,
-      "files": [
-        {
-          "id": "5586"
-        }
-      ]
-    },
-    {
-      "id": "20f9",
-      "files": [
-        {
-          "id": "1bfe",
-          "rawFile": {},
-          "size": 39704,
-          "type": "image/jpeg",
-          "name": "implantt.jpg"
-        },
-        {
-          "id": "1571",
-          "rawFile": {},
-          "size": 142127,
-          "type": "image/jpeg",
-          "name": "trong-rang-cam-ghep-rang-implant.jpg"
-        }
-      ]
-    },
-    {
-      "id": "48d0",
-      "name": "fadsfasd",
-      "type": "",
-      "itemcategory": "",
-      "price": 0,
-      "sku": "",
-      "onhand": 0,
-      "files": [],
-      "created": "2025-04-22T11:19:18.736Z"
-    },
-    {
       "id": "7278",
-      "name": "asdasdas",
+      "name": "Emax",
       "type": "",
       "itemcategory": "",
       "price": 0,
-      "sku": "",
+      "sku": "QDA",
       "onhand": 0,
       "files": [],
       "created": "2025-04-22T11:19:20.931Z"
     },
     {
       "id": "54b5",
-      "name": "asfasdasd",
+      "name": "zirconia",
       "type": "",
       "itemcategory": "",
       "price": 0,
-      "sku": "",
+      "sku": "QFAS",
       "onhand": 0,
       "files": [],
       "created": "2025-04-22T11:19:23.015Z"
@@ -129,7 +27,7 @@
       "name": "asdasdsfasd",
       "type": "",
       "itemcategory": "",
-      "price": 0,
+      "price": 100000,
       "sku": "",
       "onhand": 0,
       "files": [],
@@ -292,6 +190,14 @@
       "type": "image/png",
       "name": "logo.png",
       "created": "2025-04-23T00:48:09.007Z"
+    },
+    {
+      "id": "b3a3",
+      "rawFile": {},
+      "size": 652942,
+      "type": "text/html",
+      "name": "New Text Document.html",
+      "created": "2025-04-23T06:37:12.016Z"
     }
   ]
 }

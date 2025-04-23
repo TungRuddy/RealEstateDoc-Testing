@@ -49,7 +49,7 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
       if (params['id']) {
         this.form = null;
         if(this.sub) this.sub.unsubscribe();
-        this.cd.detectChanges();
+        this.cd.markForCheck();
         this.sub = this.itemsService.get(params['id']).subscribe((res) => {
           if (res) {
             this.setForm(res);
@@ -71,12 +71,13 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
       sku: new FormControl(obj?.sku || ''),
       onhand: new FormControl(obj?.onhand || 0),
       files: new FormControl(obj?.files || []),
+      created: new FormControl(obj?.created),
     });
 
     // this.uploader.onBuildItemForm = (item, form) => {
     //   form.append('id', this.form?.getRawValue().id);
     // };
-    this.cd.detectChanges();
+    this.cd.markForCheck();
   }
   ngAfterViewInit(): void {}
   ngOnDestroy(): void {}
@@ -103,7 +104,7 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
         created: new Date()
       }).toPromise());
       this.form?.controls['files'].setValue([...this.form?.value.files]);
-      this.cd.detectChanges();
+      this.cd.markForCheck();
       // await this.itemsService.save({id: this.form?.value.id, files: this.form?.value.files}).toPromise();
       await this.itemsService.save(this.form?.getRawValue()).toPromise();
       this.uploader.clearQueue();
@@ -131,5 +132,13 @@ export class ItemsDetailComponent implements OnInit, AfterViewInit, OnDestroy {
       this.notifyService.sendData('Cant save item!');
       btn.disabled = false;
     }
+  }
+
+  async remove(index: number){
+    this.form?.value.files.splice(index, 1);
+    this.form?.controls['files'].setValue([...this.form?.value.files]);
+    this.cd.markForCheck();
+    await this.itemsService.save(this.form?.getRawValue()).toPromise();
+    this.notifyService.sendData('Removed successfully!');
   }
 }

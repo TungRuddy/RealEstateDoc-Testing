@@ -20,8 +20,10 @@ import { NotifyService } from '../services/notify.service';
 import { COLUMN, createColumn } from '../models/column.model';
 import { DATE } from '../models/variables.model';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
+import { HelperService } from '../services/helper.service';
+import { DialogConfirmComponent } from '../share/dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-items',
@@ -84,31 +86,33 @@ export class ItemsComponent implements OnInit, AfterViewInit, OnDestroy {
   sub!: Subscription;
   subData!: Subscription;
 
+  rowSelected!: ITEM;
+
   readonly itemsService = inject(ItemsService);
   readonly notifyService = inject(NotifyService);
+  readonly helper = inject(HelperService);
   readonly dialog = inject(MatDialog);
+  readonly router = inject(Router);
 
-  @ViewChild("drawer") drawer!: MatDrawer;
+  @ViewChild('drawer') drawer!: MatDrawer;
 
-  constructor(
-    private cd: ChangeDetectorRef,
-  ) {
+  constructor(private cd: ChangeDetectorRef) {
     if (this.subData) this.subData.unsubscribe();
 
     this.subData = this.itemsService.getData().subscribe((res) => {
       if (res) {
-        this.dataSource.data[this.dataSource.data.findIndex((f) => f && f.id === res.id)] = res;
+        this.dataSource.data[
+          this.dataSource.data.findIndex((f) => f && f.id === res.id)
+        ] = res;
         this.dataSource._updateChangeSubscription();
-        this.cd.detectChanges();
+        this.cd.markForCheck();
       }
     });
   }
   ngOnInit(): void {
     this.getData();
   }
-  ngAfterViewInit(): void {
-
-  }
+  ngAfterViewInit(): void {}
   ngOnDestroy(): void {}
 
   addItem() {
@@ -133,6 +137,38 @@ export class ItemsComponent implements OnInit, AfterViewInit, OnDestroy {
       if (res) {
         this.dataSource = new MatTableDataSource<ITEM>(res);
         this.cd.detectChanges();
+      }
+    });
+  }
+
+  close() {
+    this.drawer?.close();
+    if (this.rowSelected && this.rowSelected.id) {
+      this.helper.removeIdFromRoute(this.rowSelected.id, this.router);
+    }
+  }
+
+  delete(){
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      data: {
+        title: 'Confirm Delete item',
+        content: `Are you sure you want to delete item: ${this.rowSelected?.name || this.rowSelected?.id}?`,
+      },
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.itemsService.delete(this.rowSelected).subscribe((res2) => {
+          if (res2) {
+            this.notifyService.sendData('Deleted successfully!');
+            this.dataSource.data.splice(this.dataSource.data.findIndex((f) => f && f.id === this.rowSelected.id), 1);
+            this.dataSource._updateChangeSubscription();
+            this.cd.markForCheck();
+            this.close();
+          } else {
+            this.notifyService.sendData('Cant delete item!');
+          }
+        });
       }
     });
   }

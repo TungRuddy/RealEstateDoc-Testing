@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FileUploadModule } from 'ng2-file-upload';
+import { PipeFileSize } from "./pipes/fileSize.pipe";
 
 
 export const SharingImports = [
@@ -11,5 +12,6 @@ export const SharingImports = [
 ]
 
 export const UploadFileImports = [
-    FileUploadModule
+    FileUploadModule,
+    PipeFileSize
 ]

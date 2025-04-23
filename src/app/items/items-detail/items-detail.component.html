@@ -70,26 +70,24 @@
         <div class="flex-auto">
           <p class="mb-0 mt-0">{{ file.name }}</p>
           <small class="text-gray-400"
-            >size: {{ file.size }}, created:
+            >size: {{ file.size | pipeFileSize }}, created:
             {{ file.created | date : "dd/MM/yyyy HH:mm" }}</small
           >
         </div>
-        <button
-          mat-icon-button
-          color="accent"
-          type="button"
-          click-stop-propagation
-        >
-          <mat-icon>save_alt</mat-icon>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
-        <button
-          mat-icon-button
-          color="warn"
-          click-stop-propagation
-          type="button"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>save_alt</mat-icon>
+            <span>Download</span>
+          </button>
+          <button mat-menu-item (click)="remove(i)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
       </div>
     </mat-list-item>
   </mat-list>
